@@ -1,0 +1,39 @@
+---
+title: "Rejection Sampling"
+author: "Robert Winter"
+format: pdf
+editor: visual
+---
+
+## Quarto
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+# Obtain 2000 samples from the Unif[0, 1] distribution.
+sample = data.frame(unif = runif(2000, 0, 1))
+
+# Obtain 2000 samples from the Beta(2, 2) distribution based on our samples from the uniform distribution.
+sample$betaDensity = dbeta(sample$unif, 2, 2)
+
+# Set normalizing constant to be the maximum Beta density value
+maxDens = max(sample$betaDensity, na.rm = T)
+
+# Apply the acceptance / rejection criterion
+sample$accepted = ifelse(runif(2000, 0, 1) < sample$betaDensity / maxDens, T, F)
+
+# Filter down to the first 1000 samples accepted
+sample <- sample %>%
+  filter(accepted == T)
+sample <- sample[c(1:1000),]
+```
+
+```{r}
+# Plot histogram
+hist(sample$unif[sample$accepted], freq = F, main = "Histogram of Samples from U[0,1] Distributed Beta(2, 2)", xlab = "Samples from U[0,1]")
+
+# Plot the Beta(2, 2) distribution
+curve(dbeta(x, 2, 2), from = 0, to = 1, add = T)
+```
