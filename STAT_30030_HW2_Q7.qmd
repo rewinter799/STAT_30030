@@ -9,7 +9,6 @@ editor: visual
 
 ```{r}
 library(dplyr)
-library(ggplot2)
 ```
 
 ```{r}
