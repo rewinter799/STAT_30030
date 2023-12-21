@@ -1,13 +1,31 @@
 ---
-title: "Rejection Sampling"
+title: "STAT 30030 Homework 2, Exercise 7: \n Rejection Sampling"
 author: "Robert Winter"
 format: pdf
+highlight-style: pygments
+geometry:
+      - top=30mm
+      - left=30mm
+toc: true
+toc-title: Table of Contents
+number-sections: true
 editor: visual
+
+# Wrap code chunk text
+include-in-header:
+  text: |
+    \usepackage{fvextra}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 ---
 
-## Quarto
+# Introduction
+
+Implement rejection sampling to obtain 1,000 samples distributed with a Beta(2,2) distribution using samples from a $\mathcal{U}[0,1]$ distribution. Plot a histogram with your 1,000 samples and superimpose the density of a Beta(2,2) distribution.
+
+# Analysis
 
 ```{r}
+#| include: false
 library(dplyr)
 ```
 
@@ -32,7 +50,7 @@ sample <- sample[c(1:1000),]
 
 ```{r}
 # Plot histogram
-hist(sample$unif[sample$accepted], freq = F, main = "Histogram of Samples from U[0,1] Distributed Beta(2, 2)", xlab = "Samples from U[0,1]")
+hist(sample$unif[sample$accepted], freq = F, main = "Beta(2,2) Data Generated Using Rejection Sampling", xlab = "Accepted Draws from U[0,1]")
 
 # Plot the Beta(2, 2) distribution
 curve(dbeta(x, 2, 2), from = 0, to = 1, add = T)

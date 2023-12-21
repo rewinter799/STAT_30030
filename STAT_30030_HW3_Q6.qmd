@@ -1,5 +1,5 @@
 ---
-title: "STAT 30030 Homework 3, Exercise 6"
+title: "STAT 30030 Homework 3, Exercise 6: \n Method of Moments Estimation"
 author: "Robert Winter"
 highlight-style: pygments
 format: pdf
@@ -116,13 +116,6 @@ Finally, theoretically, the MSE of $\hat{\lambda}$ should be $\mathrm{Var}(\hat{
 bias_lambda_2_hat = mean(data$lambda_2_hat) - lambda
 
 variance_lambda_2_hat = var(data$lambda_2_hat)
-# variance_lambda_2_hat = 0
-# for(i in c(1:10000)){
-#   variance_lambda_2_hat = variance_lambda_2_hat
-#                           + (sum(data$lambda_2_hat)/nrow(data) 
-#                           - data$lambda_2_hat[i])^2
-# }
-# variance_lambda_2_hat = variance_lambda_2_hat / (nrow(data)-1)
 
 mse_lambda_2_hat = variance_lambda_2_hat + bias_lambda_2_hat^2
 ```
@@ -169,7 +162,7 @@ plot_lambda_hat
 
 ## Asymptotics of $\hat{\lambda}_2$
 
-In @fig-lambda_2_hat, we observe that $\hat{\lambda}_2$ appears to be asymptotically distributed $\sim \mathcal{N}\big(\lambda, \frac{1}{8}\lambda^2\big)$, as we derived in Exercise\~5(iii), with $n=10$.
+In @fig-lambda_2_hat, we observe that $\hat{\lambda}_2$ appears to be asymptotically distributed $\sim \mathcal{N}\big(\lambda, \frac{1}{8}\lambda^2\big)$, as we derived in Exercise 5(iii), with $n=10$.
 
 ```{r}
 #| label: fig-lambda_2_hat

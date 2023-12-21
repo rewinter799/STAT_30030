@@ -1,5 +1,5 @@
 ---
-title: "STAT 30030 HW 5, Problem 5"
+title: "STAT 30030 HW 5, Exercise 5: \n\n Confidence Intervals"
 author: "Robert Winter"
 highlight-style: pygments
 format: pdf
